@@ -1,0 +1,43 @@
+
+// Stap 2: Importeer de Bootstrap source-bestanden
+@import "bootstrap/scss/bootstrap";
+
+:root {
+  --bs-indigo-dark: #321864;
+}
+
+body {
+    background-color: var(--bs-black) !important;
+    $font-family-base: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--bs-white);
+    margin-bottom: 1rem;
+  }
+  
+  .color-primary {
+    color: #6f42c1 !important;
+  }
+
+  // Stap 1: Overschrijven van de primaire kleur
+$primary: #6f42c1; // Nieuwe paarse primaire kleur
+
+
+
+.btn-primary {
+  --bs-btn-color: #fff; /* Tekstkleur */
+  --bs-btn-bg: #6610f2; /* Indigo achtergrondkleur */
+  --bs-btn-border-color: #6610f2; /* Indigo randkleur */
+  --bs-btn-hover-color: #fff; /* Tekstkleur bij hover */
+  --bs-btn-hover-bg: #520dc2; /* Donkerdere indigo bij hover */
+  --bs-btn-hover-border-color: #520dc2; /* Donkerdere indigo rand bij hover */
+  --bs-btn-focus-shadow-rgb: 82, 13, 194; /* Focus schaduw in RGB */
+  --bs-btn-active-color: #fff; /* Tekstkleur bij actieve staat */
+  --bs-btn-active-bg: #3d0a99; /* Nog donkerdere indigo bij actieve staat */
+  --bs-btn-active-border-color: #3d0a99; /* Nog donkerdere randkleur bij actieve staat */
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Ingezette schaduw bij actieve staat */
+  --bs-btn-disabled-color: #fff; /* Tekstkleur bij uitgeschakelde staat */
+  --bs-btn-disabled-bg: #8e6df3; /* Lichtere indigo bij uitgeschakelde staat */
+  --bs-btn-disabled-border-color: #8e6df3; /* Randkleur bij uitgeschakelde staat */
+}

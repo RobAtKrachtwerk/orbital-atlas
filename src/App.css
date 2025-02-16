@@ -1,0 +1,335 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: 'Inter', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::after {
+  background: linear-gradient(180deg, rgba(24,1,62,1) 0%, rgba(0,0,0,0) 100%);
+  width: 100vw;
+  height: 320px;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700; /* Gebruik een dikkere stijl voor koppen */
+  text-transform: uppercase; /* Hoofdletters voor extra flair */
+  margin-bottom: 1rem; /* Voeg wat ruimte toe onder de koppen */
+}
+
+.style-element-1::after {
+content: "";
+height: 5vh;
+display: block;
+width: 1px;
+margin: 1rem auto 0 auto;
+background-color: #fff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.title-container {
+  padding: 2rem 0;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+
+
+/* Styling voor het input veld */
+.form-control {
+    background-color: transparent !important; /* Geen achtergrondkleur */
+    border: 1px solid white !important;  /* Witte rand */
+    border-radius: 8px; /* Rand met 8px radius */
+    color: white !important; /* Tekstkleur wit */
+    padding: 0.5rem 1rem; /* Padding voor mooiere opmaak */
+    font-size: 1rem; /* Grotere lettergrootte voor leesbaarheid */
+}
+
+/* Styling voor de placeholder tekst */
+.form-control::placeholder {
+    color: white !important;  /* Witte placeholder tekst */
+    opacity: 0.8; /* Optioneel: iets transparanter */
+}
+
+/* Focus-styling (wanneer gebruiker typt) */
+.form-control:focus {
+    background-color: transparent !important;
+    color: white !important;  /* Blijf transparant tijdens typen */
+    outline: none; /* Geen blauwe focusring */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Optioneel: subtiele witte gloed */
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.filters .form-group {
+  flex: 1 1 200px;
+}
+
+.filters .form-group label {
+  color: var(--bs-white);
+  margin-bottom: .5rem;
+}
+
+.filter-label {
+  font-weight: bold;
+  display: block;
+  color: var(--bs-white);
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  fill: var(--bs-white);
+}
+
+.chevron.rotated {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+
+.search-bar svg {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.launch-list {
+  list-style: none;
+  padding: 0;
+}
+
+.subtitle-wrapper {
+  display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+}
+
+.btn-round {
+  border-radius: 100px !important;
+  aspect-ratio: 1 / 1;
+}
+
+.btn-play svg {
+  margin-left: 2px;
+}
+
+.launch-list li, .profile-section, .info-block  {
+  /* border: 1px solid #ddd; */
+  margin: 10px 0;
+  padding: 2rem;
+  border-radius: 8px;
+  background: #0B0F17;
+  border: 1px solid var(--bs-gray-700);
+  transition: .3s ease;
+  position: relative;
+}
+
+/* Hover-effect met gradient border */
+.launch-list li:hover, 
+.profile-section:hover, 
+.info-block:hover {
+  border-color: #ffffff00; /* Zorgt ervoor dat de standaard border niet in de weg zit */
+}
+
+.launch-list li:hover::before, 
+.profile-section:hover::before, 
+.info-block:hover::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #0a0f50, #3b0060); /* Donkerblauw naar donkerpaars */
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.info-block {
+  display: flex;
+  align-items: center; /* Verticale uitlijning */
+  justify-content: space-between; /* Zorgt voor ruimteverdeling */
+}
+
+.info-block > div:first-child {
+  flex: 1 1 40%; /* Flexibel, maar max 30% breed */
+  max-width: 40%;
+}
+
+.info-block > div:last-child {
+  flex: 1 1 60%; /* Flexibel, neemt de resterende ruimte */
+}
+
+
+.mission-meta {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.mission-meta span {
+  /* font-weight: 600; */
+  color: var(--bs-gray-500);
+}
+
+.card {
+
+  background-color: #0B0F17 !important;
+  background-clip: border-box;
+  border: var(--bs-card-border-width) solid var(--bs-gray-700) !important;
+  border-radius: var(--bs-card-border-radius);
+  color: white !important;
+}
+
+.provider-pill {
+  display: inline-block;
+  font-size: 0.7rem; /* Kleinere tekst */
+  font-weight: normal; /* Dikgedrukt */
+  text-transform: uppercase; /* Hoofdletters */
+  padding: 5px 10px; /* Ruimte binnenin */
+  border-radius: 20px; /* Maakt het pilvormig */
+  border: 1px solid; /* Maak een rand */
+  text-align: center;
+  margin-bottom: 1rem; /* Ruimte onder de pill */
+  width: fit-content;
+}
+
+
+
+
+.launch-item h2, .profile-section h2 {
+  font-weight: bold; /* Maak de tekst dik */
+  text-transform: uppercase; /* Zet de tekst in hoofdletters */
+  color: var(--bs-white);
+  margin-bottom: 1rem; /* Voeg wat ruimte onder de h2 toe */
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+width: fit-content;
+margin-top: 1rem;
+}
+
+.btn-primary svg {
+  font-size: .8rem;
+}
+
+.launch-list p {
+  margin: 5px 0;
+  color: var(--bs-white);
+}
+
+
+/* LOGIN PAGE  */
+
+.login-page {
+  height: 60vh; /* Maak de pagina fullscreen */
+  gap: 2rem;
+}
+
+.register-section {
+  background-color: #6610F2; /* Indigo achtergrondkleur */
+  color: white; /* Witte tekst */
+  text-align: center;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.login-section {
+  padding: 2rem;
+}
+
+.login-section h2 {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  --bs-btn-bg: #6610F2;
+  --bs-btn-border-color: #6610F2;
+  --bs-btn-hover-bg: #520dc2;
+  --bs-btn-hover-border-color: #520dc2;
+  --bs-btn-color: #fff;
+}
+
+.btn-light {
+  color: #6610F2;
+  border: 1px solid #6610F2;
+  background: transparent;
+}
+
+.btn-light:hover {
+  background: #6610F2;
+  color: white;
+}
