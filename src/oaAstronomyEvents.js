@@ -11,7 +11,7 @@ const AstronomyEventsCalendar = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/events"); // Call our backend
+                const response = await fetch("https://orbital-atlas.onrender.com/api/events"); // Call our backend
                 if (!response.ok) throw new Error("Failed to fetch events");
 
                 const data = await response.json();
