@@ -45,10 +45,6 @@ app.get("/api/events", (req, res) => {
   ]);
 });
 
-
-
-
-
 // CORS toestaan voor je frontend URL
 app.use(cors({ origin: "https://orbital-atlas.vercel.app" }));
 
