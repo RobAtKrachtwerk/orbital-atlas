@@ -36,3 +36,10 @@ app.use("/users", userRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+app.get("/api/events", (req, res) => {
+  res.json([
+      { id: 1, name: "Lunar Eclipse", date: "2025-03-14" },
+      { id: 2, name: "Mars Opposition", date: "2025-06-22" }
+  ]);
+});
