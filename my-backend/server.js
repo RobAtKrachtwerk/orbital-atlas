@@ -38,32 +38,36 @@ app.get("/api/events", (req, res) => {
   ]);
 });
 
-// Proxy route voor AstronomyAPI
-app.get("/api/astronomy-events", async (req, res) => {
-    try {
-        const API_ID = process.env.ASTRONOMY_API_ID;
-        const SECRET_KEY = process.env.ASTRONOMY_API_SECRET;
+app.get("/api/test-astronomy", async (req, res) => {
+  try {
+      const API_ID = process.env.ASTRONOMY_API_ID;
+      const SECRET_KEY = process.env.ASTRONOMY_API_SECRET;
 
-        if (!API_ID || !SECRET_KEY) {
-            return res.status(500).json({ error: "Missing API credentials" });
-        }
+      if (!API_ID || !SECRET_KEY) {
+          return res.status(500).json({ error: "Missing API credentials" });
+      }
 
-        const response = await fetch("https://api.astronomyapi.com/api/v2/studio/events", {
-            method: "GET",
-            headers: {
-                "Authorization": `Basic ${Buffer.from(`${API_ID}:${SECRET_KEY}`).toString("base64")}`,
-                "Content-Type": "application/json"
-            }
-        });
+      const response = await fetch("https://api.astronomyapi.com/api/v2/studio/events", {
+          method: "GET",
+          headers: {
+              "Authorization": `Basic ${Buffer.from(`${API_ID}:${SECRET_KEY}`).toString("base64")}`,
+              "Content-Type": "application/json"
+          }
+      });
 
-        if (!response.ok) throw new Error("Failed to fetch Astronomy API events");
+      if (!response.ok) {
+          console.error("Error response:", await response.text());
+          throw new Error(`Failed to fetch Astronomy API: ${response.status}`);
+      }
 
-        const data = await response.json();
-        res.json(data);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+      const data = await response.json();
+      res.json({ success: true, data });
+  } catch (error) {
+      console.error("Fetch error:", error.message);
+      res.status(500).json({ error: error.message });
+  }
 });
+
 
 // ✅ **Belangrijk: Start de server PAS NA ALLE ROUTES!**
 app.listen(PORT, () => {
