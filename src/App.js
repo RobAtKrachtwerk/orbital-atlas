@@ -25,10 +25,10 @@ const App = () => {
 
     return (
         <Auth0Provider
-            domain="dev-5o80hihkxjod2ilj.eu.auth0.com"
-            clientId="Hj4S5JKLzgwUcqpRnBmBPd5uCPBCp163"
-            authorizationParams={{ redirect_uri: window.location.origin }}
-        >
+        domain="dev-5o80hihkxjod2ilj.eu.auth0.com"
+        clientId="Hj4S5JKLzgwUcqpRnBmBPd5uCPBCp163"
+        authorizationParams={{ redirect_uri: window.location.origin }}
+      >
             <Router>
                 <Header profilePhoto={profilePhoto} />
                 <Routes>

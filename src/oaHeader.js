@@ -50,9 +50,7 @@ function Header({ profilePhoto }) {
             <li className="nav-item">
               <Link to="/atlas" className="nav-link text-white">Atlas</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/events" className="nav-link text-white">Events</Link>
-            </li>
+         
          
           </ul>
         </nav>
