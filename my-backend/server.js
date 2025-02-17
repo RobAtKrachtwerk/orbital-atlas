@@ -10,7 +10,7 @@ const killPort = require("kill-port"); // Importeer kill-port
 const fetch = require("node-fetch"); // Zorg dat je node-fetch hebt geïnstalleerd
 require("dotenv").config(); // Zorg dat je .env variabelen kan gebruiken
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001; // Gebruik Render's PORT variabele
 
 // CORS configuratie
 const corsOptions = {
@@ -75,6 +75,7 @@ app.get("/api/astronomy-events", async (req, res) => {
     }
 });
 
+// Start server op de juiste poort
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
