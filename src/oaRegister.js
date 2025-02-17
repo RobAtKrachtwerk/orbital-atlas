@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5001/auth/register", {
+      const response = await fetch("https://orbital-atlas.onrender.com/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -18,8 +20,8 @@ function Register() {
         throw new Error(result.message || "Failed to register");
       }
       setMessage(result.message);
+      navigate("/login");
     } catch (error) {
-      console.error("Error during registration:", error);
       setMessage("Registration failed.");
     }
   };

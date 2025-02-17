@@ -8,6 +8,8 @@ import Discover from "./oaDiscover";
 import News from "./oaNews";
 import Atlas from "./oaAtlas";
 import Events from "./oaAstronomyEvents";
+import Register from "./oaRegister";
+import Profile from "./oaProfile";
 import './App.css';
 import './custom-bootstrap.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,6 +36,8 @@ const App = () => {
                 <Route path="/discover" element={<Discover />} />
                     <Route path="/profile" element={<Profile onProfilePhotoUpdate={handleProfilePhotoUpdate} />} />
                     <Route path="/launches" element={<Launches />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/profile" element={<Profile />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/atlas" element={<Atlas />} />
                     <Route path="/events" element={<Events />} />
