@@ -47,17 +47,21 @@ app.get("/api/test-astronomy", async (req, res) => {
           return res.status(500).json({ error: "Missing API credentials" });
       }
 
+      // Correcte encoding voor Basic Auth
+      const authHeader = `Basic ${Buffer.from(`${API_ID}:${SECRET_KEY}`).toString("base64")}`;
+
       const response = await fetch("https://api.astronomyapi.com/api/v2/studio/events", {
           method: "GET",
           headers: {
-              "Authorization": `Basic ${Buffer.from(`${API_ID}:${SECRET_KEY}`).toString("base64")}`,
+              "Authorization": authHeader,
               "Content-Type": "application/json"
           }
       });
 
       if (!response.ok) {
-          console.error("Error response:", await response.text());
-          throw new Error(`Failed to fetch Astronomy API: ${response.status}`);
+          const errorText = await response.text();
+          console.error("Error response:", errorText);
+          throw new Error(`Failed to fetch Astronomy API: ${response.status} - ${errorText}`);
       }
 
       const data = await response.json();
