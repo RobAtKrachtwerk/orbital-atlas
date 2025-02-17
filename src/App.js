@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
+import { Auth0Provider, useAuth0 as useAuth } from "@auth0/auth0-react";
 import Header from "./oaHeader";
 import Launches from "./oaLaunches";
 import Discover from "./oaDiscover";
