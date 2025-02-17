@@ -44,33 +44,41 @@ app.get("/api/test-astronomy", async (req, res) => {
       const SECRET_KEY = process.env.ASTRONOMY_API_SECRET;
 
       if (!API_ID || !SECRET_KEY) {
+          console.error("❌ API credentials ontbreken!");
           return res.status(500).json({ error: "Missing API credentials" });
       }
 
-      // Correcte encoding voor Basic Auth
-      const authHeader = `Basic ${Buffer.from(`${API_ID}:${SECRET_KEY}`).toString("base64")}`;
+      // Correcte Base64 encoding
+      const authString = Buffer.from(`${API_ID}:${SECRET_KEY}`).toString("base64");
+
+      console.log("✅ API keys gevonden, probeer Astronomy API aan te roepen...");
 
       const response = await fetch("https://api.astronomyapi.com/api/v2/studio/events", {
           method: "GET",
           headers: {
-              "Authorization": authHeader,
+              "Authorization": `Basic ${authString}`, // Fix: Correcte Base64 encoding
               "Content-Type": "application/json"
           }
       });
 
+      console.log("🔍 Response status:", response.status);
+
       if (!response.ok) {
           const errorText = await response.text();
-          console.error("Error response:", errorText);
+          console.error("❌ Astronomy API Error:", errorText);
           throw new Error(`Failed to fetch Astronomy API: ${response.status} - ${errorText}`);
       }
 
       const data = await response.json();
+      console.log("✅ Astronomy API Response:", data);
+
       res.json({ success: true, data });
   } catch (error) {
-      console.error("Fetch error:", error.message);
+      console.error("❌ Fetch error:", error.message);
       res.status(500).json({ error: error.message });
   }
 });
+
 
 
 // ✅ **Belangrijk: Start de server PAS NA ALLE ROUTES!**
