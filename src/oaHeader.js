@@ -58,27 +58,36 @@ function Header({ profilePhoto }) {
 
       <div className="d-flex justify-content-end align-items-center">
   
-  {isAuthenticated ? (
+      {isAuthenticated ? (
     <Dropdown>
       <Dropdown.Toggle
         variant="outline"
         id="dropdown-basic"
         className="d-flex align-items-center text-white"
       >
-        {/* Altijd de initialen tonen in een cirkel */}
-        <div
-          className="rounded-circle d-flex align-items-center justify-content-center me-2"
-          style={{
-            width: "40px",
-            height: "40px",
-            backgroundColor: "#6610F2",
-            color: "#FFF",
-            fontWeight: "bold",
-            fontSize: "18px",
-          }}
-        >
-          {getInitial(user?.name)}
-        </div>
+        {/* Profielfoto weergeven als die beschikbaar is, anders initialen */}
+        {user?.picture ? (
+          <img
+            src={user.picture}
+            alt="Profile"
+            className="rounded-circle me-2"
+            style={{ width: "40px", height: "40px", objectFit: "cover" }}
+          />
+        ) : (
+          <div
+            className="rounded-circle d-flex align-items-center justify-content-center me-2"
+            style={{
+              width: "40px",
+              height: "40px",
+              backgroundColor: "#6610F2",
+              color: "#FFF",
+              fontWeight: "bold",
+              fontSize: "18px",
+            }}
+          >
+            {getInitial(user?.name)}
+          </div>
+        )}
       </Dropdown.Toggle>
 
       <Dropdown.Menu align="end">
@@ -93,6 +102,7 @@ function Header({ profilePhoto }) {
   ) : (
     <LoginButton />
   )}
+
 </div>
 
     </header>
