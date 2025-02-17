@@ -9,35 +9,11 @@ const AstronomyEventsCalendar = () => {
     const [error, setError] = useState(null);
 
     const API_BASE_URL = "https://orbital-atlas.onrender.com"; // Backend URL
-
-    useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/astronomy-events`);
-                if (!response.ok) throw new Error("Failed to fetch events");
-    
-                const data = await response.json();
-                console.log("Astronomy API Events via Proxy:", data);
-    
-                if (!data.data) throw new Error("Invalid API response");
-    
-                const formattedEvents = data.data.map(event => ({
-                    id: event.id,
-                    name: event.name,
-                    date: event.date
-                }));
-    
-                setEvents(formattedEvents);
-                setLoading(false);
-            } catch (err) {
-                setError(err.message);
-                setLoading(false);
-            }
-        };
-    
-        fetchEvents();
-    }, []);
-
+// Verwijderde API-aanroep, geen fetch meer
+useEffect(() => {
+    setEvents([]); // Zet een lege lijst of statische data als je wilt
+    setLoading(false);
+}, []);
     const onDateChange = (date) => {
         setSelectedDate(date);
     };
